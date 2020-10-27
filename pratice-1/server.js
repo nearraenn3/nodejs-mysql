@@ -1,17 +1,17 @@
 const express = require('express');
-const sql = require('./database.js');
+const sql = require('./database');
 const bodyParser = require('body-parser');
 
-// Set up app to a new express app
 const app = express();
 
-// Parse req of content-type: application/json
 app.use(bodyParser.json());
 
-require("./routes/routes")(app);
+app.get('/', (req, res) => {
+    res.send('hello');
+})
 
-// Set port. listen for req
+require("./routes/route")(app);
+
 app.listen('3000', () => {
     console.log('Server started on port 3000');
 })
-
